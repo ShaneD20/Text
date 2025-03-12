@@ -1,4 +1,4 @@
-#include "text.h"
+#include "pch.h"
 
 size_t Text::size()
 {
@@ -7,11 +7,11 @@ size_t Text::size()
 
 const char* Text::operator & (const char* suffix)
 {
-	std::vector<char> output = glyphs;
-	output.pop_back();
-	output.insert(output.end(), suffix, suffix + std::strlen(suffix));
-	output.push_back('\0');
-	return output.data();
+	size_t length = 1 + strlen(suffix) + glyphs.size();
+	char* newS = (char*)malloc(length * sizeof(char));
+	strcpy(newS, glyphs.data());
+	strcat(newS, suffix);
+	return newS;
 }
 
 const char* Text::share()
