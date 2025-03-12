@@ -1,3 +1,4 @@
+#pragma once
 #include <vector>
 
 struct Text
@@ -15,7 +16,7 @@ public:
 
 	size_t size();
 
-	/// <returns>Creates a new C String with the characters stored in Text the provided suffix</returns>
+	/// <returns>Creates a new C String with the characters stored in Text and the appended suffix</returns>
 	const char* operator & (const char* values);
 
 	/// <summary>Concatenates the C String stored in text and returns the result</summary>
@@ -23,4 +24,9 @@ public:
 
 	/// <summary>Shares the current C String stored in Text</summary>
 	const char* share();
+
+	/// <summary>Pops the specified count of characters off the end of the Text.
+	/// Will not go below 0 characters.
+	/// </summary>
+	bool pop(size_t count);
 };
